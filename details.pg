@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+import { View, Text, Image, TextInput, Button } from 'react-native';
+
+const App = () => {
+  const [imageSource, setImageSource] = useState('');
+  const [text, setText] = useState('');
+
+  const handleImageChange = (source) => {
+    setImageSource(source);
+  };
+
+  const handleTextChange = (inputText) => {
+    setText(inputText);
+  };
+
+  return (
+    <View>
+      <View style={{ alignItems: 'center', marginTop: 50 }}>
+        <TextInput
+          style={{ width: 200, height: 40, marginBottom: 20, borderWidth: 1, padding: 10 }}
+          placeholder="Insira o URL da imagem"
+          onChangeText={handleImageChange}
+          value={imageSource}
+        />
+        <Image
+          style={{ width: 200, height: 200 }}
+          source={{ uri: imageSource }}
+        />
+      </View>
+      <View style={{ alignItems: 'center', marginTop: 50 }}>
+        <TextInput
+          style={{ width: 200, height: 40, marginBottom: 20, borderWidth: 1, padding: 10 }}
+          placeholder="Insira um texto"
+          onChangeText={handleTextChange}
+          value={text}
+        />
+        <Text>{text}</Text>
+      </View>
+    </View>
+  );
+};
+
+export default App;
